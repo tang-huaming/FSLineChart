@@ -21,5 +21,4 @@
 + (instancetype)fsDarkGray;
 + (instancetype)fsLightGray;
 
-
 @end

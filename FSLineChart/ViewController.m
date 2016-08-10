@@ -29,25 +29,24 @@
 #pragma mark - Setting up the charts
 
 - (void)loadSimpleChart {
+    // [1] 构造图表数据
     NSMutableArray* chartData = [NSMutableArray arrayWithCapacity:10];
-    
     for(int i=0;i<10;i++) {
         int r = (rand() + rand()) % 1000;
         chartData[i] = [NSNumber numberWithInt:r + 200];
     }
-    
-    // Setting up the line chart
+    // [2] 设置水平和垂直方向的网格个数
     self.chart.verticalGridStep = 5;
     self.chart.horizontalGridStep = 9;
-    
+    // [3] 设置横坐标显示格式
     self.chart.labelForIndex = ^(NSUInteger item) {
         return [NSString stringWithFormat:@"%lu",(unsigned long)item];
     };
-    
+    // [4] 设置纵坐标显示格式
     self.chart.labelForValue = ^(CGFloat value) {
         return [NSString stringWithFormat:@"%.f", value];
     };
-    
+    // [5] 设置图表的实际显示数据并将其渲染到view上
     [self.chart setChartData:chartData];
 }
 
